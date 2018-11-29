@@ -6,16 +6,9 @@ Copied and based on: https://github.com/pypa/sampleproject
 # -*- coding: utf-8 -*-
 from setuptools import setup,find_packages
 import os
-here = os.path.abspath(path.dirname(__file__))udd
 
-PACKAGES = find_packages()
-
-# Get the long description from the README file
-with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+with open("README", 'r') as f:
     long_description = f.read()
-
-# Arguments marked as "Required" below must be included for upload to PyPI.
-# Fields marked as "Optional" may be commented out.
 
 setup(
     name='climaps',  # Required
@@ -27,11 +20,12 @@ setup(
     license = 'MIT'
     author='Robin Clancy, Rebeca de Buen, Hamid Pahlavan and Yakelyn R. Jauregui',  # Optional
     author_email='rclancy@uw.edu',  # Optional
-    packages = PACKAGES,
+    packages =['climaps'],
     keywords='Yale Climate opinion maps, Census',  # Optional
     # Similar to `install_requires` above, these must be valid existing
     # projects.
     package_data=['data/*']
+    scripts=['add here','more']
     extras_require={  # Optional
         'dev': ['check-manifest'],
         'test': ['coverage'],
