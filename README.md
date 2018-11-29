@@ -19,6 +19,8 @@ Organization of the Project
 The project has the following structure:
 ```
 climaps/
+├── LICENSE
+├── README.md
 ├── climaps
 │   ├── __init__.py
 │   ├── clean_data.py
@@ -38,9 +40,7 @@ climaps/
 │   └── README.md
 ├── images
 │   └── logo.png
-├── LICENSE
-├── README.md
 ├── requirements.txt
-└── setup.py
-
+├── setup.py
+└── issues
 ```
