@@ -38,7 +38,7 @@ climaps/
 │   └── README.md
 ├── images
 │   └── logo.png
-|── LICENSE
+├── LICENSE
 ├── README.md
 ├── requirements.txt
 └── setup.py
