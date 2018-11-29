@@ -5,7 +5,7 @@
 >source:https://www.mediamatters.org/blog
 
 Team: Robin Clancy, Rebeca de Buen, Hamid Pahlavan and Yakelyn R. Jauregui
-Course project for CSE 583 - Software Engineering for Data Scientists
+>Course project for CSE 583 - Software Engineering for Data Scientists
 
 
 
