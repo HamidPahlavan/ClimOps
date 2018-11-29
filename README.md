@@ -41,6 +41,7 @@ climaps/
 ├── images
 │   └── logo.png
 ├── requirements.txt
+├── environment.yml
 ├── setup.py
 └── issues
 ```
