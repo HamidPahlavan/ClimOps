@@ -6,16 +6,6 @@ to Census data at the County Level.
 import pandas as pd
 import numpy as np
 
-def get_data(filepath):
-    """
-    Function to read in data and return a dataframe.
-    Takes in a string that is a filepath to csv file
-    Returns a dataframe
-    """
-    dataFrame = pd.read_csv(filepath, encoding='latin-1')
-    return dataFrame
-
-
 def select_geography(ycom_df, geography):
     """
     Helper function for get_ycom_counties
