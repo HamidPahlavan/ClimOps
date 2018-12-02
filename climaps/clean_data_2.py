@@ -3,8 +3,8 @@ This module is used to prepare data from the the 2015 Census,
 2018 Yale Climate Opinion Maps (YCOM) and land area datasets,
 such that they can be combined.
 """
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 def scale_cencus_variables(census):
     """
@@ -99,11 +99,11 @@ def fix_land_area_county_names(land_area_data, census):
     land_area_data = simplify_county_names(land_area_data)
     
     # Match county names to census 
-    land_area_data.loc[67:96]['County'] = census.loc[67:96]['County']
-    land_area_data.loc[1141:1141]['County'] = 'LaSalle'
-    land_area_data.loc[1762:1762]['County'] = 'Carson City'
-    land_area_data.loc[1801:1801]['County'] = 'Doña Ana'
-    land_area_data.loc[2913:2951]['County'] = census.loc[2913:2951]['County']
+    land_area_data.loc[67:96,'County'] = census.loc[67:96,'County']
+    land_area_data.loc[1141:1141,'County'] = 'LaSalle'
+    land_area_data.loc[1762:1762,'County'] = 'Carson City'
+    land_area_data.loc[1801:1801,'County'] = 'Doña Ana'
+    land_area_data.loc[2913:2951,'County'] = census.loc[2913:2951,'County']
     return land_area_data
 
 
@@ -155,9 +155,9 @@ def add_missing_land_areas(land_area_data):
     #92 Wrangell City and Borough 2,541
     #250 Broomfield 33.55
     """
-    land_area_data.loc[89:89]['LND110200D']=452.0
-    land_area_data.loc[92:92]['LND110200D']=2541.0
-    land_area_data.loc[250:250]['LND110200D']=33.55
+    land_area_data.loc[89:89,'LND110200D']=452.0
+    land_area_data.loc[92:92,'LND110200D']=2541.0
+    land_area_data.loc[250:250,'LND110200D']=33.55
     return land_area_data
 
 
@@ -168,6 +168,3 @@ def join_data(ycom_county, census, land_area_data):
     census['LogPopDensity']=np.log10(census['TotalPop']/land_area_data['LND110200D'])
     data = pd.concat(([ycom_county,census]),axis = 1)
     return data
-
-
-
