@@ -6,10 +6,12 @@ such that they can be combined.
 import numpy as np
 import pandas as pd
 
-def scale_cencus_variables(census):
+def scale_census_variables(census):
     """
     Function to scale Men, Women, Employed and Citizen
-    variables in census by TotalPop to get a percentage
+    variables in census by TotalPop to get a percentage.
+    Input: dataframe of census data.
+    Output: dataframe of census data scaled to population (%).
     """
     census.Men = 100*census.Men/census.TotalPop
     census.Women = 100*census.Women/census.TotalPop
@@ -18,10 +20,13 @@ def scale_cencus_variables(census):
     return census
 
 
-def remove_cencus_not_in_ycom(census):
+def remove_census_not_in_ycom(census):
     """
     Function to remove data for Puerto Rico,
-    which is not included in YCOM data
+    which is not included in YCOM data.
+    Input: dataframe of census data
+    Output: dataframe of census data with Puerto
+    Rico removed
     """
     census = census[census['State'] != 'Puerto Rico']
     return census
