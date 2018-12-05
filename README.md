@@ -1,4 +1,4 @@
-# Climate opinion maps (climaps)
+# Climate Opinions (ClimOps)
 
 <img src="https://github.com/HamidPahlavan/project/blob/master/images/logo.png" alt="logo" width="400" height="200" />
 
