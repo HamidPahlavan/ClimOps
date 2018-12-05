@@ -29,30 +29,32 @@ Organization of the Project
 ===========================
 The project has the following structure:
 ```
-climaps/
-├── LICENSE
-├── README.md
-├── climaps
-│   ├── __init__.py
-│   ├── clean_data.py
-│   ├── tests
-│   │   ├── __init__.py
-│   │   └── test_clean_data.py
-│   └── version.py
-├── data
-│   ├── YCOM_2018_Data.csv
-│   ├── acs2015_census_tract_data.csv
-│   └── acs2015_county_data.csv
-├── Docs
-│   ├── Component specification.pdf
-│   ├── Functional specification.pdf
-│   └── final_presentation.pdf
-├── examples
-│   └── README.md
-├── images
-│   └── logo.png
-├── requirements.txt
-├── environment.yml
-├── setup.py
-└── issues
+├── ClimOps
+   ├── Docs
+   │   ├── Component_specification.md
+   │   ├── Functional_specification.md
+   │   └── climops.html
+   ├── LICENSE
+   ├── README.md
+   ├── climops
+   │   ├── calculate_statistics.py
+   │   ├── plot_heatmap.py
+   │   ├── prepare_data.py
+   │   ├── heatmap.html
+   │   ├── scatter.html
+   │   ├── tests
+   │   │   ├── __init__.py
+   │   │   └── test_clean_data.py
+   │   └── version.py
+   ├── data
+   │   ├── LND01.xls
+   │   ├── YCOM_2018_Data.csv
+   │   ├── YCOM_2018_Metadata.csv
+   │   └── acs2015_county_data.csv
+   ├── environment.yml
+   ├── images
+   │   └── logo.png
+   ├── requirements.txt
+   └── setup.py
+
 ```
