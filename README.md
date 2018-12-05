@@ -30,12 +30,6 @@ Organization of the Project
 The project has the following structure:
 ```
 ├── ClimOps
-   ├── Docs
-   │   ├── Component_specification.md
-   │   ├── Functional_specification.md
-   │   └── climops.html
-   ├── LICENSE
-   ├── README.md
    ├── climops
    │   ├── calculate_statistics.py
    │   ├── plot_heatmap.py
@@ -51,10 +45,16 @@ The project has the following structure:
    │   ├── YCOM_2018_Data.csv
    │   ├── YCOM_2018_Metadata.csv
    │   └── acs2015_county_data.csv
-   ├── environment.yml
+   ├── Docs
+   │   ├── Component_specification.md
+   │   ├── Functional_specification.md
+   │   └── climops.html
    ├── images
    │   └── logo.png
+   ├── LICENSE
+   ├── README.md
    ├── requirements.txt
+   ├── environment.yml
    └── setup.py
 
 ```
