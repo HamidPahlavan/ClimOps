@@ -3,7 +3,7 @@ python:
   - '3.6'
 install:
   - pip install -r requirements.txt
-  - pip install .
+  #- pip install .
 script:
   - cd climops/tests
   - test_clean_data.py
