@@ -1,6 +1,6 @@
 ## This script includes unit tests for the module clean_data.py
 import unittest
-from clean_data import *
+from prepare_data import *
 
 class UnitTests(unittest.TestCase):
 
