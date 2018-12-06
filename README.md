@@ -58,3 +58,21 @@ The project has the following structure:
    └── setup.py
 
 ```
+
+Installation
+============
+
+First, get ClimOps on your own computer by using the following git command:
+
+```
+git clone https://github.com/HamidPahlavan/climops.git
+```
+
+Next, to install the package you will need to go into the climops directory and run the setup.py file:
+```
+pip install -r requirements.txt 
+```
+
+
+
+
