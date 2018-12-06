@@ -5,7 +5,7 @@ install:
   - pip install -r requirements.txt
   #- pip install .
 script:
-  - cd climops/tests
-  - test_clean_data.py
+  - cd climops/tests/
+  - python test_clean_data.py
 after_success:
   - coveralls
