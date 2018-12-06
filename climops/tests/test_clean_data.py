@@ -1,6 +1,6 @@
 ## This script includes unit tests for the module clean_data.py
 import unittest
-from climops/climops/prepare_data import *
+from climops.prepare_data import *
 
 class UnitTests(unittest.TestCase):
 
