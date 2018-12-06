@@ -4,7 +4,7 @@ Copied and based on: https://github.com/pypa/sampleproject
 """
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from setuptools import setup,find_packages
+from setuptools import setup, find_packages
 import os
 
 with open("README", 'r') as f:
@@ -19,16 +19,16 @@ setup(
     url='https://github.com/https://github.com/HamidPahlavan/climops',  
     license = 'MIT'
     #author='Robin Clancy, Rebeca de Buen, Hamid Pahlavan and Yakelyn R. Jauregui',  # Optional
-    author_email='rclancy@uw.edu',  # Optional
+    #author_email='rclancy@uw.edu',  # Optional
     packages =['climops'],
-    keywords='Yale Climate opinion maps, Census',  # Optional
+    #keywords='Yale Climate opinion maps, Census',  # Optional
     # Similar to `install_requires` above, these must be valid existing
     # projects.
     package_data=['data/*']
-    extras_require={  # Optional
-        'dev': ['check-manifest'],
-        'test': ['coverage'],
-    },
+    #extras_require={  # Optional
+     #   'dev': ['check-manifest'],
+      #  'test': ['coverage'],
+   # },
 
     project_urls={  # Optional
         'Bug Reports': 'https://github.com/https://github.com/HamidPahlavan/climops/issues',
