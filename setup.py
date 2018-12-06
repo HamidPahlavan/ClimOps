@@ -16,9 +16,9 @@ setup(
     description='Python interface to get statistical relationships from Yale Climate opinion maps and Census',  # Optional
     # Often, this is the same as your README, so you can just read it in from
     # that file directly (as we have already done above)
-    url='https://github.com/https://github.com/HamidPahlavan/ClimOps',  
+    url='https://github.com/https://github.com/HamidPahlavan/climops',  
     license = 'MIT'
-    author='Robin Clancy, Rebeca de Buen, Hamid Pahlavan and Yakelyn R. Jauregui',  # Optional
+    #author='Robin Clancy, Rebeca de Buen, Hamid Pahlavan and Yakelyn R. Jauregui',  # Optional
     author_email='rclancy@uw.edu',  # Optional
     packages =['climops'],
     keywords='Yale Climate opinion maps, Census',  # Optional
@@ -31,7 +31,7 @@ setup(
     },
 
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/https://github.com/HamidPahlavan/ClimOps/issues',
-        'Source': 'https://github.com/https://github.com/HamidPahlavan/ClimOps/',
+        'Bug Reports': 'https://github.com/https://github.com/HamidPahlavan/climops/issues',
+        'Source': 'https://github.com/https://github.com/HamidPahlavan/climops/',
     },
 )
