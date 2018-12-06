@@ -15,43 +15,31 @@ The final product would allow the user to explore (through basic statistics and 
 
 User profile
 ============
-General public. But specially useful for academic researchers or policy makers; this product will allow them to explore relationships about climate beliefs and demographic data in a easy  
+General public. But specially useful for academic researchers or policy makers. This product will allow them to explore relationships about climate beliefs and demographic data in a easy and efficient way.   
 
-
-Sources of data
-===========================
+Data sources
+============
 This project combines the following data sets:
- - The 2018 Yale Climate Opinions Map Data
- - The 2015 United States Census 
+ - The 2018 Yale Climate Opinions Map Data:
+	Measures of public opinion about different aspects of global warming. This data is structured as​ % ‘Yes’ responses to each question in the survey ​at state, congressional district, and county levels.
+>   Source: http://climatecommunication.yale.edu/visualizations-data/ycom-us-2018/?est=happening&type=value&geo=county
+ - The 2015 United States Census:
+	Provides information on a wide range of social, economic, demographic, and housing characteristics. Topics covered include income, employment, health insurance, the age distribution, and education, among many others. The data is organized by states as well as counties.
+>   Source:https://www.census.gov/
 
-Organization of the Project
-===========================
-The project has the following structure:
-```
-climaps/
-├── LICENSE
-├── README.md
-├── climaps
-│   ├── __init__.py
-│   ├── clean_data.py
-│   ├── tests
-│   │   ├── __init__.py
-│   │   └── test_clean_data.py
-│   └── version.py
-├── data
-│   ├── YCOM_2018_Data.csv
-│   ├── acs2015_census_tract_data.csv
-│   └── acs2015_county_data.csv
-├── Docs
-│   ├── Component specification.pdf
-│   ├── Functional specification.pdf
-│   └── final_presentation.pdf
-├── examples
-│   └── README.md
-├── images
-│   └── logo.png
-├── requirements.txt
-├── environment.yml
-├── setup.py
-└── issues
-```
+Use Cases
+=========
+
+1. Reveal relationship between a specific climate opinion and demographic
+variable (choose by the user)
+	- What information does user provide?
+		- Select opinion of interest and demographic variable of interest from dropdown boxes ideally.
+		- Perhaps some options for how the analysis is done (e.g. control for certain variables?)
+
+	- What responses does the system provide?
+		- Some correlation/regression/significance values
+		- Maps of correlation/regression/significance where analysis is
+performed individually for each state.
+
+
+
