@@ -1,7 +1,7 @@
-## This script includes unit tests for the module clean_data.py
+## This script includes unit tests for the module prepare_data.py
 import unittest
 import prepare_data
-
+import pandas as pd
 
 class UnitTests(unittest.TestCase):
 
