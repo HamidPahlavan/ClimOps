@@ -2,6 +2,7 @@
 import unittest
 import prepare_data
 import pandas as pd
+import numpy as np
 
 class UnitTests(unittest.TestCase):
 
