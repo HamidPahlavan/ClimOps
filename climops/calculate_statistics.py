@@ -56,7 +56,7 @@ def calculate_stats_outputs_standard(n_ycom, n_census, ycom_county, census):
     return stats_outputs_standard
 
 
-def get_regs_df(stats_outputs_standard):
+def get_regs_df(stats_outputs_standard, n_census, n_ycom):
     """
     making dataframe of regression coefficients
     these are kinda standardized -they show what % change in an opinion is given 
@@ -66,7 +66,7 @@ def get_regs_df(stats_outputs_standard):
     return regs
 
 
-def get_cors_df(stats_outputs):
+def get_cors_df(stats_outputs, n_census, n_ycom):
     """
     making dataframe of correlation coefficients
     """
@@ -74,7 +74,7 @@ def get_cors_df(stats_outputs):
     return cors
 
 
-def get_pvalues_df(stats_outputs):
+def get_pvalues_df(stats_outputs,  n_census, n_ycom):
     """
     making dataframes of pvalues
     """
