@@ -1,11 +1,12 @@
 language: python
 python:
   - '3.6'
-#before install:
+before install:
+   - export PYTHONPATH=$PYTHONPATH:$(pwd)
 #  - python setup.py install
 install:
   - pip install -r requirements.txt
-  - pip install .
+#  - pip install .
 script:
   - cd climops/tests/
   - python -m unittest discover
