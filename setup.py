@@ -14,7 +14,7 @@ setup(
             Hamid Pahlavan and Yakelyn R. Jauregui
             ''',
     author_email='rclancy@uw.edu',
-    packages=['climops', 'climops.prepare_data', 'climops.calculate_statistics'],
+    packages=['climops', 'prepare_data', 'calculate_statistics'],
     keywords='Yale Climate opinion maps, Census',
     #package_data=['data/*'],
     )
