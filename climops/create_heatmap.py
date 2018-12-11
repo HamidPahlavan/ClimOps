@@ -66,6 +66,7 @@ LAND_AREA_DATA = prepare_data.remove_land_area_not_in_census(LAND_AREA_DATA)
 LAND_AREA_DATA = prepare_data.fix_land_area_county_names(LAND_AREA_DATA, CENSUS)
 # Adding land area values where missing
 LAND_AREA_DATA = prepare_data.add_missing_land_areas(LAND_AREA_DATA)
+
 # Getting one dataframe from the three datasets
 N_CENSUS.append('LogPopDensity')
 COMBINED_DATA = prepare_data.join_data(YCOM_COUNTY, CENSUS, LAND_AREA_DATA)
@@ -74,6 +75,7 @@ COMBINED_DATA = prepare_data.join_data(YCOM_COUNTY, CENSUS, LAND_AREA_DATA)
 STATS_OUTPUTS = calculate_statistics.calculate_stats_outputs(N_YCOM, N_CENSUS, YCOM_COUNTY, CENSUS)
 STATS_OUTPUTS_STANDARD = calculate_statistics.calculate_stats_outputs_standard(
     N_YCOM, N_CENSUS, YCOM_COUNTY, CENSUS)
+
 # Making dataframe of regression coefficients
 # These are kinda standardized
 # i.e. they show what % change in an opinion is

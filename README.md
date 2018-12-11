@@ -25,7 +25,8 @@ Sources of data
 ===========================
 This project combines the following data sets:
  - The 2018 Yale Climate Opinions Map Data
- - The 2015 United States Census data
+ - The 2015 United States Census
+
 Organization of the Project
 ===========================
 The project has the following structure:
