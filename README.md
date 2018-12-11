@@ -25,8 +25,7 @@ Sources of data
 ===========================
 This project combines the following data sets:
  - The 2018 Yale Climate Opinions Map Data
- - The 2015 United States Census 
-
+ - The 2015 United States Census data
 Organization of the Project
 ===========================
 The project has the following structure:
@@ -34,13 +33,15 @@ The project has the following structure:
 ├── ClimOps
    ├── climops
    │   ├── calculate_statistics.py
+   │   ├── create_heatmap.py
    │   ├── plot_heatmap.py
    │   ├── prepare_data.py
    │   ├── heatmap.html
    │   ├── scatter.html
    │   ├── tests
    │   │   ├── __init__.py
-   │   │   └── test_clean_data.py
+   │   │   ├── test_calculate_statistics.py
+   │   │   └── test_prepare_data.py
    │   └── version.py
    ├── data
    │   ├── LND01.xls
@@ -51,6 +52,8 @@ The project has the following structure:
    │   ├── Component_specification.md
    │   ├── Functional_specification.md
    │   └── climops.html
+   ├── Examples
+   │   └── create_heatmap.ipynb
    ├── images
    │   └── logo.png
    ├── LICENSE
@@ -75,6 +78,18 @@ Next, to install the package you will need to go into the climops directory and 
 pip install -r requirements.txt 
 ```
 
+Usage Instructions
+============
 
+First follow installation guide
 
-
+Generate heatmaps and scatter plots displaying relationships between variables by either
+1. Running the following from the climops folder from a bash terminal:
+```
+$ python create_heatmap.py
+```
+2. Within a python terminal, rom the climops folder, execute:
+```
+import create_heatmap
+```
+3. Follow the create_heatmap.ipynb in the Examples folder
