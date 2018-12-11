@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='climops',
@@ -14,7 +14,7 @@ setup(
             Hamid Pahlavan and Yakelyn R. Jauregui
             ''',
     author_email='rclancy@uw.edu',
-    packages=find_packages(),
+    packages=['climops', 'climops.prepare_data', 'climops.calculate_statistics'],
     keywords='Yale Climate opinion maps, Census',
-    package_data=['data/*'],
+    #package_data=['data/*'],
     )
