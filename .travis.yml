@@ -2,7 +2,7 @@ language: python
 python:
   - '3.6'
 before install:
-   - export PATH=$PATH:$/home/travis/build/HamidPahlavan/climops/climops/
+   - export PYTHONPATH=$PYTHONPATH:$(pwd)
 #  - python setup.py install
 install:
   - pip install -r requirements.txt
