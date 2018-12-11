@@ -32,15 +32,15 @@ def remove_census_not_in_ycom(census):
     return census
 
 
-def remove_not_in_land_area(df):
+def remove_not_in_land_area(dframe):
     """
     Function to remove data for Puerto Rico,
     which is not included in YCOM data
     """
-    removerows=np.array([81, 2412])
-    df = df.drop(df.index[removerows])
-    df = df.reset_index(drop=True)
-    return df
+    removerows = np.array([81, 2412])
+    dframe = dframe.drop(dframe.index[removerows])
+    dframe = dframe.reset_index(drop=True)
+    return dframe
 
 
 def select_geography(ycom_df, geography):
@@ -56,15 +56,15 @@ def select_geography(ycom_df, geography):
     return ycom_county
 
 
-def simplify_county_names(df):
+def simplify_county_names(dframe):
     """
     Removes words 'county' and 'parish' and extra white space
     from county field of a dataframe
     """
-    df['County'] = df['County'].str.replace('County', '')
-    df['County'] = df['County'].str.replace('Parish', '')
-    df['County'] = df['County'].str.strip()
-    return(df)
+    dframe['County'] = dframe['County'].str.replace('County', '')
+    dframe['County'] = dframe['County'].str.replace('Parish', '')
+    dframe['County'] = dframe['County'].str.strip()
+    return dframe
 
 
 def fix_ycom_county_names(ycom_county):
@@ -80,7 +80,7 @@ def fix_ycom_county_names(ycom_county):
     # Keep county names in separate columns
     ycom_county['County'] = county_state_sep[0]
     # Remove words 'county' and 'parish' and extra white space
-    ycom_county=simplify_county_names(ycom_county)
+    ycom_county = simplify_county_names(ycom_county)
     return ycom_county
 
 
@@ -88,7 +88,7 @@ def remove_land_area_not_in_census(land_area_data):
     """
     Removing rows which are in land area but not census
     """
-    removerows=np.array([92, 1654, 2418, 2917, 2922, 2950])
+    removerows = np.array([92, 1654, 2418, 2917, 2922, 2950])
     land_area_data = land_area_data.drop(land_area_data.index[removerows])
     land_area_data = land_area_data.reset_index(drop=True)
     return land_area_data
@@ -102,13 +102,13 @@ def fix_land_area_county_names(land_area_data, census):
     """
     # Remove words 'county' and 'parish' and extra white space
     land_area_data = simplify_county_names(land_area_data)
-    
-    # Match county names to census 
-    land_area_data.loc[67:96,'County'] = census.loc[67:96,'County']
-    land_area_data.loc[1141:1141,'County'] = 'LaSalle'
-    land_area_data.loc[1762:1762,'County'] = 'Carson City'
-    land_area_data.loc[1801:1801,'County'] = 'Doña Ana'
-    land_area_data.loc[2913:2951,'County'] = census.loc[2913:2951,'County']
+
+    # Match county names to census
+    land_area_data.loc[67:96, 'County'] = census.loc[67:96, 'County']
+    land_area_data.loc[1141:1141, 'County'] = 'LaSalle'
+    land_area_data.loc[1762:1762, 'County'] = 'Carson City'
+    land_area_data.loc[1801:1801, 'County'] = 'Doña Ana'
+    land_area_data.loc[2913:2951, 'County'] = census.loc[2913:2951, 'County']
     return land_area_data
 
 
@@ -118,18 +118,19 @@ def get_ycom_counties(ycom_df):
     and fix names to match census.
     Takes in Data frame of YCOM 2018 data
     """
-    ycom_county= select_geography(ycom_df, 'County')
-    ycom_county= fix_ycom_county_names(ycom_county)
+    ycom_county = select_geography(ycom_df, 'County')
+    ycom_county = fix_ycom_county_names(ycom_county)
     return ycom_county
 
 
 def fix_ycom_descriptions(ycom_meta):
     """
-    Shortens all descriptions for YCOM variables. 
+    Shortens all descriptions for YCOM variables.
     Then shortens the longest ones even more so they fit in Bokeh's dropdown boxes.
     """
-    for x in range(3,len(ycom_meta)):
-        ycom_meta['VARIABLE DESCRIPTION'][x]=ycom_meta['VARIABLE DESCRIPTION'][x][25:].capitalize()
+    for yind in range(3, len(ycom_meta)):
+        ycom_meta['VARIABLE DESCRIPTION'][yind] = (
+            ycom_meta['VARIABLE DESCRIPTION'][yind][25:].capitalize())
 
     desc_p1 = ycom_meta['VARIABLE DESCRIPTION'][31][:117]
     desc_p2 = ycom_meta['VARIABLE DESCRIPTION'][23][139:]
@@ -149,7 +150,7 @@ def select_land_area_county(land_area_data):
     land_area_data = land_area_data[~land_area_county.str.isupper()]
     land_area_data['County'] = land_area_county
     land_area_data = land_area_data.reset_index(drop=True)
-    return (land_area_data)
+    return land_area_data
 
 
 def add_missing_land_areas(land_area_data):
@@ -160,9 +161,9 @@ def add_missing_land_areas(land_area_data):
     #92 Wrangell City and Borough 2,541
     #250 Broomfield 33.55
     """
-    land_area_data.loc[89:89,'LND110200D']=452.0
-    land_area_data.loc[92:92,'LND110200D']=2541.0
-    land_area_data.loc[250:250,'LND110200D']=33.55
+    land_area_data.loc[89:89, 'LND110200D'] = 452.0
+    land_area_data.loc[92:92, 'LND110200D'] = 2541.0
+    land_area_data.loc[250:250, 'LND110200D'] = 33.55
     return land_area_data
 
 
@@ -170,6 +171,6 @@ def join_data(ycom_county, census, land_area_data):
     """
     Getting one dataframe from the three datasets
     """
-    census['LogPopDensity']=np.log10(census['TotalPop']/land_area_data['LND110200D'])
-    data = pd.concat(([ycom_county,census]),axis = 1)
+    census['LogPopDensity'] = np.log10(census['TotalPop']/land_area_data['LND110200D'])
+    data = pd.concat(([ycom_county, census]), axis=1)
     return data

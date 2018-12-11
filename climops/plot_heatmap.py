@@ -5,9 +5,10 @@ each relationship to be visualized in greater detail.
 """
 from bokeh.models import BasicTicker, ColorBar, ColumnDataSource, CustomJS, LinearColorMapper
 from bokeh.models.widgets import Select
-from bokeh.palettes import RdBu 
 from bokeh.plotting import figure
 from bokeh.transform import transform
+
+import bokeh.palettes
 import numpy as np
 import pandas as pd
 
@@ -26,34 +27,34 @@ def stack_stats(cors, regs, pval):
     regs.columns.name = 'census'
     pval.index.name = 'ycom'
     pval.columns.name = 'census'
-    
+
     cors_stack = cors.stack().rename("R").reset_index()
     regs_stack = regs.stack().rename("b").reset_index()
-    regs_stack.columns=['ycom', 'census', 'b']
+    regs_stack.columns = ['ycom', 'census', 'b']
     pval_stack = pval.stack().rename("value").reset_index()
-    pval_stack.columns=['ycom', 'census', 'pval']
-    all_stack=pd.concat([cors_stack, pval_stack['pval'], regs_stack['b']],axis=1)
+    pval_stack.columns = ['ycom', 'census', 'pval']
+    all_stack = pd.concat([cors_stack, pval_stack['pval'], regs_stack['b']], axis=1)
     return all_stack
 
 
-def get_varnames(df, datasource):
+def get_varnames(dframe, datasource):
     """
     Getting YCOM and census variable names for hover over feature.
     inputs:
         datasource: string, either 'census' or 'ycom'
-        df: stacked dataframe, i.e. all_stack
+        dframe: stacked dataframe, i.e. all_stack
     output:
         nameseries: series of variable names
     """
-    nameseries = list(df.loc[:][datasource].drop_duplicates())
+    nameseries = list(dframe.loc[:][datasource].drop_duplicates())
     return nameseries
 
 
-def create_heatmap_fig(df, vartype):
+def create_heatmap_fig(dframe, vartype):
     """
     Generates heatmap of chosen statistic (R, b, pval).
     inputs:
-        df: stacked dataframe, i.e. all_stack
+        dframe: stacked dataframe, i.e. all_stack
         vartype: string, either 'R', 'b', 'pval'
             R = correlation coefficient
             b = regression coefficient
@@ -62,50 +63,51 @@ def create_heatmap_fig(df, vartype):
         heatmap_plot: figure
     """
     # Getting census and ycom variable names for hover over feature
-    census_vars = get_varnames(df, 'census')
-    ycom_vars = get_varnames(df, 'ycom')
-    
+    census_vars = get_varnames(dframe, 'census')
+    ycom_vars = get_varnames(dframe, 'ycom')
+
     # Define a figure
     heatmap_plot = figure(
-        plot_width = 600,
-        plot_height = 400,
-        title = "",
-        x_range = ycom_vars,
-        y_range = census_vars,
-        toolbar_location = None,
-        tools = "",
-        x_axis_location = "below",
-        tooltips = [('Census', '@ycom'), ('YCOM', '@census'), ('R', '@R'), ('b', '@b'), ('p', '@pval')])
+        plot_width=600,
+        plot_height=400,
+        title="",
+        x_range=ycom_vars,
+        y_range=census_vars,
+        toolbar_location=None,
+        tools="",
+        x_axis_location="below",
+        tooltips=[('Census', '@ycom'), ('YCOM', '@census'),
+                  ('R', '@R'), ('b', '@b'), ('p', '@pval')])
 
     heatmap_plot.axis.major_label_text_font_size = "5pt"
     heatmap_plot.xaxis.major_label_orientation = 1.2
 
     # Assigning color scale
     if vartype == 'R':
-        colors = RdBu[11]
-        mapper = LinearColorMapper(palette = colors, low = -1, high = 1)
+        colors = bokeh.palettes.RdBu11
+        mapper = LinearColorMapper(palette=colors, low=-1, high=1)
     elif vartype == 'b':
-        colors = RdBu[11]
-        mapper = LinearColorMapper(palette = colors, low = -0.3, high = 0.3)
+        colors = bokeh.palettes.RdBu11
+        mapper = LinearColorMapper(palette=colors, low=-0.3, high=0.3)
     elif vartype == 'pval':
-        colors = RdBu[11][-6:]
-        mapper = LinearColorMapper(palette = colors, low = 0, high = 1)
-            
+        colors = bokeh.palettes.RdBu11
+        mapper = LinearColorMapper(palette=colors, low=0, high=1)
+
     # Create rectangle for heatmap
     heatmap_plot.rect(
-        x = "ycom",
-        y = "census",
-        width = 1,
-        height = 1,
-        source = ColumnDataSource(df), 
-        line_color = None,
-        fill_color = transform(vartype, mapper))
+        x="ycom",
+        y="census",
+        width=1,
+        height=1,
+        source=ColumnDataSource(dframe),
+        line_color=None,
+        fill_color=transform(vartype, mapper))
 
     # Add legend
     color_bar = ColorBar(
-        color_mapper = mapper,
-        location = (0, 0),
-        ticker = BasicTicker(desired_num_ticks = np.int(len(colors))))
+        color_mapper=mapper,
+        location=(0, 0),
+        ticker=BasicTicker(desired_num_ticks=np.int(len(colors))))
 
     heatmap_plot.add_layout(color_bar, 'right')
     return heatmap_plot
@@ -116,7 +118,7 @@ def set_callback_census(source, xaxis):
     Creates javascript callback allowing for scatter plot to automatically update
     when different census variables are selected
     """
-    callback_census = CustomJS(args=dict(source=source, xaxis=xaxis),code="""
+    callback_census = CustomJS(args=dict(source=source, xaxis=xaxis), code="""
         // cb_obj is the callback object
         // cb_obj.value is the selected value.
         
@@ -142,7 +144,8 @@ def set_callback_ycom(source, yaxis, source_ycom_meta):
     Creates javascript callback allowing for scatter plot to automatically update
     when different ycom variables are selected
     """
-    callback_ycom = CustomJS(args=dict(source=source, yaxis=yaxis, source_ycom_meta=source_ycom_meta),code="""
+    callback_ycom = CustomJS(
+        args=dict(source=source, yaxis=yaxis, source_ycom_meta=source_ycom_meta), code="""
         var data = source.data;
         var ycom_var_names = source_ycom_meta.data['YCOM VARIABLE NAME'];
         var ycom_var_descriptions = source_ycom_meta.data['VARIABLE DESCRIPTION'];
@@ -172,11 +175,11 @@ def create_dropdown_census(n_census, callback_census):
         n_census: list of dropdown options based on variable names
         callback_census: custom javascript describing callback behaviour
     """
-    census_menu = Select(options=n_census, value='v', title='Census Variables') 
+    census_menu = Select(options=n_census, value='v', title='Census Variables')
     census_menu.callback = callback_census
     return census_menu
-    
-    
+
+
 def create_dropdown_ycom(n_ycom_meta, callback_ycom):
     """
     Setting up dropdown menu for census and associating the callback to autoupdate
