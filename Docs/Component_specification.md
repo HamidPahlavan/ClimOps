@@ -2,56 +2,33 @@
 Team: Robin Clancy, Rebeca de Buen, Hamid Pahlavan and Yakelyn R. Jauregui
 >Course project for CSE 583 - Software Engineering for Data Scientists
 
-Funtional Specification
+Component Specification
 =======================
 
-1. Background:
-This project will create a data set that allows researchers to explore whether a relationship exists between beliefs about climate change, demographic characteristics and transportation behaviors (for example walking, cycling, driving behaviors, use of transit types and number of cars owned) in the United States.
+### 1. Software Components:
+**Data cleaning and merging** (clean_data.py): A module for cleaning and merging the data at the county level using pandas. This component has functions that prepare each data set to have matching counties and county names, and that facilitate the merge process. 
+* *Inputs:* The raw data from the 2015 Census, Census Land Area Data, and 2018 Yale Climate Opinions Data.
+* *Output:* A dataframe of the raw data merged at the county level.
 
-The final product would allow the user to explore (through basic statistics and visualizations) questions such as:
-- Do race, ethnicity, socioeconomic status (education and income), and gender is related to climate change perceptions?
-- Do people’s beliefs about climate change have a relationship with their transportation behavior (for example, do people who believe that climate change is happening and caused by humans drive less/ own less cars/ use more public transit/ bike more?
-- How public opinion about global warming changed relative to 2014 and we want to see if this change is related to other data ( e.g., census)
+**Estimate statistics** (calculate_statistics.py): A module that estimates correlations, pvalues and bivariate regression coefficients between all of the variables in the data set using scipy and outputs them into a dataframe that can be used in the visualization module.
+* *Inputs:* A dataframe of the raw data merged at the county level.
+* *Output:* A dataframe of pvalues, correlations and regression coefficients.
 
-User profile
-============
-General public. But specially useful for academic researchers or policy makers; this product will allow them to explore relationships about climate beliefs and demographic data in a easy  
+**Visualization** (plot_heatmap.py): A module that creates interactive heatmaps and scatterplots using bokeh from the dataframe created on the statistics 
+* *Inputs:* A dataframe of pvalues, correlations and regression coefficients
+* *Output:* Interactive html scatter plots and and heatmaps for each statistical metric. 
+
+### 2. Interactions to accomplish use cases.
+The interaction between components is summarized in the following diagram:
+<img src="https://github.com/HamidPahlavan/project/blob/master/images/components.png" alt="logo" width="400" height="200" />
 
 
-Sources of data
-===========================
-This project combines the following data sets:
- - The 2018 Yale Climate Opinions Map Data
- - The 2015 United States Census 
+Two potential uses for this tool are:
+- Visualize statistical relationships between climate opinions and demographic variables
+- Visualize statistical relationships between climate opinions and reported transportation habits (for example: Drive, Carpool, Transit, Walk)
 
-Organization of the Project
-===========================
-The project has the following structure:
-```
-climaps/
-├── LICENSE
-├── README.md
-├── climaps
-│   ├── __init__.py
-│   ├── clean_data.py
-│   ├── tests
-│   │   ├── __init__.py
-│   │   └── test_clean_data.py
-│   └── version.py
-├── data
-│   ├── YCOM_2018_Data.csv
-│   ├── acs2015_census_tract_data.csv
-│   └── acs2015_county_data.csv
-├── Docs
-│   ├── Component specification.pdf
-│   ├── Functional specification.pdf
-│   └── final_presentation.pdf
-├── examples
-│   └── README.md
-├── images
-│   └── logo.png
-├── requirements.txt
-├── environment.yml
-├── setup.py
-└── issues
+For both use cases, the user can 
+- Download the tool and use the provided interactive vizualizations
+- use the link to the repo to view and explore plots.
+
 ```
