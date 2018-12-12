@@ -36,6 +36,11 @@ The project has the following structure:
    ├── climops
    │   ├── calculate_statistics.py
    │   ├── create_heatmap.py
+   │   ├── data
+   │   │   ├── LND01.xls
+   │   │   ├── YCOM_2018_Data.csv
+   │   │   ├── YCOM_2018_Metadata.csv
+   │   │   └── acs2015_county_data.csv
    │   ├── plot_heatmap.py
    │   ├── prepare_data.py
    │   ├── heatmap.html
@@ -45,11 +50,6 @@ The project has the following structure:
    │   │   ├── test_calculate_statistics.py
    │   │   └── test_prepare_data.py
    │   └── version.py
-   ├── data
-   │   ├── LND01.xls
-   │   ├── YCOM_2018_Data.csv
-   │   ├── YCOM_2018_Metadata.csv
-   │   └── acs2015_county_data.csv
    ├── Docs
    │   ├── Component_specification.md
    │   ├── Functional_specification.md
