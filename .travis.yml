@@ -1,15 +1,18 @@
+sudo: false
+
 language: python
+
 python:
   - '3.6'
-before install:
-#   - export PYTHONPATH=$PYTHONPATH:$(pwd)
-#  - python setup.py install
+  
 install:
   - pip install -r requirements.txt
   - pip install .
+  - pip install codecov
+  - pip install coverage
 script:
   - cd climops/
   - python -m unittest discover
-#  - nosetests --exe --with-coverage --cover-package=pyiterable
+  - coverage run tests.py
 after_success:
-  - coveralls
+  - codecov --token=b28bbcca-05f1-41e3-8b8d-6ee27690bad7
