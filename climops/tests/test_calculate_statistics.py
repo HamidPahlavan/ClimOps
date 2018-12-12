@@ -14,7 +14,7 @@ def prep_census_data():
     Helper function to prep census data to use in tests.
     """
     # Loading census data
-    census = pd.read_csv('../data/acs2015_county_data.csv')
+    census = pd.read_csv('climops/data/acs2015_county_data.csv')
      # Scaling Men, Women, Employed and Citizen by TotalPop to get a percentage
     census = prepare_data.scale_census_variables(census)
      # Removing counties not in ycom data (i.e. puerto rico)
@@ -29,7 +29,7 @@ def prep_ycom_data():
     Helper function to prep ycom data for tests
     """
     # Loading ycom data
-    ycom = pd.read_csv('../data/YCOM_2018_Data.csv', encoding='latin-1')
+    ycom = pd.read_csv('climops/data/YCOM_2018_Data.csv', encoding='latin-1')
     # Get county level data matching census county names
     ycom_county = prepare_data.get_ycom_counties(ycom)
     # Removing counties not in land area data
