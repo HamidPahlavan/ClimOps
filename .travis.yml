@@ -14,9 +14,9 @@ install:
 script:
 #  - cd climops/
 #  - python -m unittest discover
-  - coverage run --source=climops/ --omit=create_heatmap.py,plot_heatmap.py -m unittest discover -s climops/ -p "test_*.py"
+  - coverage run --source=climops/ --omit=climops/create_heatmap.py,climops/plot_heatmap.py -m unittest discover -s climops/ -p "test_*.py"
 
 # generate a coverage report to send to back to user
 after_success:
-  - coverage report --omit=create_heatmap.py,plot_heatmap.py
+  - coverage report --omit=climops/create_heatmap.py,climops/plot_heatmap.py
   - coveralls
