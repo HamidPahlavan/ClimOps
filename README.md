@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/HamidPahlavan/climops.svg?branch=master)](https://travis-ci.org/HamidPahlavan/climops)
-
 # Climate Opinions (ClimOps)
+
+[![Build Status](https://travis-ci.org/HamidPahlavan/climops.svg?branch=master)](https://travis-ci.org/HamidPahlavan/climops)
 
 <img src="https://github.com/HamidPahlavan/project/blob/master/images/logo.png" alt="logo" width="400" height="200" />
 
