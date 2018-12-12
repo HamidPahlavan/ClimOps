@@ -1,5 +1,3 @@
-sudo: false
-
 language: python
 
 python:
@@ -8,11 +6,12 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install .
-  - pip install codecov
-  - pip install coverage
+  - pip install coveralls
+  
 script:
   - cd climops/
   - python -m unittest discover
-  - coverage run tests.py
+  - py.test climops/tests*.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
+
 after_success:
-  - codecov --token=b28bbcca-05f1-41e3-8b8d-6ee27690bad7
+  - coveralls
