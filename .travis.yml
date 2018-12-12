@@ -18,5 +18,5 @@ script:
 
 # generate a coverage report to send to back to user
 after_success:
-  - coverage report --omit=climops/create_heatmap.py,climops/plot_heatmap.py
+  - coverage report
   - coveralls
