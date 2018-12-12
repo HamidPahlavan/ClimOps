@@ -21,18 +21,21 @@ def stack_stats(cors, regs, pval):
     inputs: cors, regs, pval
     output: combined stacked data (all_stack)
     """
-    cors.index.name = 'ycom'
-    cors.columns.name = 'census'
-    regs.index.name = 'ycom'
-    regs.columns.name = 'census'
-    pval.index.name = 'ycom'
-    pval.columns.name = 'census'
+    YCOM_LABEL = 'ycom'
+    CENSUS_LABEL = 'census'
+    
+    cors.index.name = YCOM_LABEL 
+    cors.columns.name = CENSUS_LABEL
+    regs.index.name = YCOM_LABEL 
+    regs.columns.name = CENSUS_LABEL
+    pval.index.name = YCOM_LABEL 
+    pval.columns.name = CENSUS_LABEL
 
     cors_stack = cors.stack().rename("R").reset_index()
     regs_stack = regs.stack().rename("b").reset_index()
-    regs_stack.columns = ['ycom', 'census', 'b']
+    regs_stack.columns = [YCOM_LABEL , CENSUS_LABEL, 'b']
     pval_stack = pval.stack().rename("value").reset_index()
-    pval_stack.columns = ['ycom', 'census', 'pval']
+    pval_stack.columns = [YCOM_LABEL , CENSUS_LABEL, 'pval']
     all_stack = pd.concat([cors_stack, pval_stack['pval'], regs_stack['b']], axis=1)
     return all_stack
 
@@ -62,9 +65,12 @@ def create_heatmap_fig(dframe, vartype):
     output:
         heatmap_plot: figure
     """
+    YCOM_LABEL = 'ycom'
+    CENSUS_LABEL = 'census'
+    
     # Getting census and ycom variable names for hover over feature
-    census_vars = get_varnames(dframe, 'census')
-    ycom_vars = get_varnames(dframe, 'ycom')
+    census_vars = get_varnames(dframe, CENSUS_LABEL)
+    ycom_vars = get_varnames(dframe, YCOM_LABEL)
 
     # Define a figure
     heatmap_plot = figure(
@@ -95,8 +101,8 @@ def create_heatmap_fig(dframe, vartype):
 
     # Create rectangle for heatmap
     heatmap_plot.rect(
-        x="ycom",
-        y="census",
+        x=YCOM_LABEL,
+        y=CENSUS_LABEL,
         width=1,
         height=1,
         source=ColumnDataSource(dframe),
