@@ -25,7 +25,7 @@ The interaction between components is summarized in the following diagram:
 
 Two potential uses for this tool are:
 - Visualize statistical relationships between climate opinions and demographic variables
-- Visualize statistical relationships between climate opinions and reported transportation habits (for example)Drive, Carpool, Transit, Walk
+- Visualize statistical relationships between climate opinions and reported transportation habits (for example: Drive, Carpool, Transit, Walk)
 
 For both use cases, the user can 
 - Download the tool and use the provided interactive vizualizations
