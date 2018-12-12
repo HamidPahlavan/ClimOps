@@ -95,3 +95,8 @@ $ python create_heatmap.py
 import create_heatmap
 ```
 3. Follow the create_heatmap.ipynb in the Examples folder
+
+4. Or just visit the following webpage:
+```
+http://htmlpreview.github.io/?https://github.com/HamidPahlavan/ClimOps/blob/master/Docs/climops.html
+```
