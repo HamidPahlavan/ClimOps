@@ -21,12 +21,6 @@ def calculate_stats_outputs(n_ycom, n_census, ycom_county, census):
 
     for yind, yvar in enumerate(n_ycom):
         for cind, cvar in enumerate(n_census):
-            #nans when ny (census) index is 9,10,14 ie. income, incomeErr, childpoverty
-            #reason is Loving Texas (not kidding)
-            #ind=2673, a county with no data for these variables
-            #census.Income is same as #census[ny[9]]
-            #n.b. if missing values are in census for given variable
-            #     then county is ignored for that calculation
             ycom_notnull = ycom_county[yvar][census[cvar].notnull()]
             census_notnull = census[cvar][census[cvar].notnull()]
             stats_outputs[yind, cind, 0:5] = linregress(ycom_notnull, census_notnull)
@@ -45,18 +39,10 @@ def calculate_stats_outputs_standard(n_ycom, n_census, ycom_county, census):
     stats_outputs_standard = np.zeros((len(n_ycom), len(n_census), 5))
     for yind, yvar in enumerate(n_ycom):
         for cind, cvar in enumerate(n_census):
-            #nans when ny (census) index is 9,10,14 ie. income, incomeErr, childpoverty
-            #reason is Loving Texas (not kidding)
-            #ind=2673, a county with no data for these variables
-            #census.Income is same as #census[ny[9]]
-            #n.b. if missing values are in census for given variable
-            #     then county is ignored for that calculation
             ycom_notnull = ycom_county[yvar][census[cvar].notnull()]
             census_notnull = census[cvar][census[cvar].notnull()]
 
             #also doing calculations on standardized variables
-            #standardized_column = (column - mean(column)) / std(column)
-            #e.g. ycom_standard = (ycom_notnull - np.mean(ycom_notnull)) / np.std(ycom_notnull)
             census_standard = (census_notnull - np.mean(census_notnull)) / np.std(census_notnull)
             stats_outputs_standard[yind, cind, 0:5] = linregress(ycom_notnull, census_standard)
     return stats_outputs_standard

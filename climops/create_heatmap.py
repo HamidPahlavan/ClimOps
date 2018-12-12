@@ -77,9 +77,6 @@ STATS_OUTPUTS_STANDARD = calculate_statistics.calculate_stats_outputs_standard(
     N_YCOM, N_CENSUS, YCOM_COUNTY, CENSUS)
 
 # Making dataframe of regression coefficients
-# These are kinda standardized
-# i.e. they show what % change in an opinion is
-# given a 1 standard deviation change in a census variable
 REGS = pd.DataFrame(STATS_OUTPUTS_STANDARD[:, :, 0], columns=N_CENSUS, index=N_YCOM)
 #making dataframe of correlation coefficients
 CORS = pd.DataFrame(STATS_OUTPUTS[:, :, 2], columns=N_CENSUS, index=N_YCOM)
