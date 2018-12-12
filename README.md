@@ -52,6 +52,7 @@ The project has the following structure:
    ├── Docs
    │   ├── Component_specification.md
    │   ├── Functional_specification.md
+   │   ├── Final_Presentation.pdf
    │   ├── Tech_Review.pdf
    │   └── climops.html
    ├── Examples
