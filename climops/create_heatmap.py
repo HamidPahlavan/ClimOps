@@ -31,7 +31,7 @@ output_file("heatmap.html")
 
 # Preparing census data
 # Loading census data
-CENSUS = pd.read_csv('data/acs2015_county_data.csv')
+CENSUS = pd.read_csv('../climops/data/acs2015_county_data.csv')
 # Scaling Men, Women, Employed and Citizen by TotalPop to get a percentage
 CENSUS = prepare_data.scale_census_variables(CENSUS)
 # Removing counties not in ycom data (i.e. puerto rico)
@@ -43,8 +43,8 @@ N_CENSUS = list(CENSUS)[3:]
 
 # Preparing YCOM data
 # Loading ycom data
-YCOM = pd.read_csv('data/YCOM_2018_Data.csv', encoding='latin-1')
-YCOM_META = pd.read_csv('data/YCOM_2018_Metadata.csv', encoding='latin-1')
+YCOM = pd.read_csv('../climops/data/YCOM_2018_Data.csv', encoding='latin-1')
+YCOM_META = pd.read_csv('../climops/data/YCOM_2018_Metadata.csv', encoding='latin-1')
 # Get county level data matching census county names
 YCOM_COUNTY = prepare_data.get_ycom_counties(YCOM)
 # Removing counties not in land area data
@@ -57,7 +57,7 @@ N_YCOM_META = list(YCOM_META['VARIABLE DESCRIPTION'])[3:]
 
 # Preparing land area data
 # Loading land_area_data
-LAND_AREA_DATA = pd.read_excel('data/LND01.xls')
+LAND_AREA_DATA = pd.read_excel('../climops/data/LND01.xls')
 # Selecting only counties
 LAND_AREA_DATA = prepare_data.select_land_area_county(LAND_AREA_DATA)
 # Removing rows which are in land area but not census
