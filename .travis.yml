@@ -14,7 +14,7 @@ install:
 script:
 #  - cd climops/
 #  - python -m unittest discover
-  - coverage run -m unittest discover -s climops -p "test_*.py"
+  - coverage run -m unittest discover -s climops/climops -p "test_*.py"
 
 # generate a coverage report to send to back to user
 after_success:
