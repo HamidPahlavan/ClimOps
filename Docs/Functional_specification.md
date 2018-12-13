@@ -15,6 +15,7 @@ The final product would allow the user to explore (through basic statistics and 
 User profile
 ============
 General public. But specially useful for academic researchers or policy makers. This product will allow them to explore relationships about climate beliefs and demographic data in a easy and efficient way. Users not familiar with python or bash should be able to view the product.   
+
 Data sources
 ============
 This project combines the following data sets:
