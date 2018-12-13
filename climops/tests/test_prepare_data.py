@@ -99,8 +99,16 @@ class UnitTests(unittest.TestCase):
         #data = prepare_data.join_data(ycom_county, census)
         #self.assertTrue(data.shape ==(3142, (len(ycom_county.columns) +
                                     #len(census_county.columns))))
-        
-        
+
+    def test_fix_ycom_descriptions(self):
+        """
+        Makes sure that the descriptions of YCOM variables are short enough.
+        """
+        ycom_meta = pd.read_csv('climops/data/YCOM_2018_Metadata.csv', encoding='latin-1')
+        ycom_meta = prepare_data.fix_ycom_descriptions(ycom_meta)
+        self.assertLess(max(ycom_meta['VARIABLE DESCRIPTION'].str.len()), 130)
+
+
     def test_land_area_functions(self):
         """
         Test functions for preparing land area dataset and finally makes sure
