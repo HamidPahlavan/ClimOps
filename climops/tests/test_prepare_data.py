@@ -99,6 +99,25 @@ class UnitTests(unittest.TestCase):
         #data = prepare_data.join_data(ycom_county, census)
         #self.assertTrue(data.shape ==(3142, (len(ycom_county.columns) +
                                     #len(census_county.columns))))
+        
+        
+    def test_land_area_functions(self):
+        """
+        Test functions for preparing land area dataset and finally makes sure
+        that counties are exactly the same between land area and census
+        dataset.
+        One test to test them all!
+        """
+        census = pd.read_csv('climops/data/acs2015_county_data.csv')
+        census = prepare_data.scale_census_variables(census)
+        census = prepare_data.remove_census_not_in_ycom(census)
+        census = prepare_data.remove_not_in_land_area(census)
+        land_area_data = pd.read_excel('climops/data/LND01.xls')
+        land_area_data = prepare_data.select_land_area_county(land_area_data)
+        land_area_data = prepare_data.remove_land_area_not_in_census(land_area_data)
+        land_area_data = prepare_data.fix_land_area_county_names(land_area_data, census)
+        land_area_data = prepare_data.add_missing_land_areas(land_area_data)
+        self.assertTrue(np.all(land_area_data['County'] == census['County']))
 
 
 if __name__ == '__main__':
