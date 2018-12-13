@@ -39,9 +39,9 @@ Use Cases
 
 2. Reveal relationship between a specific climate opinion and demographic
 variable (chosen by the user)
-        - What information does user provide?
-                - Select opinion of interest and demographic variable of interest from dropdown boxes.
+	- What information does user provide?
+		- Select opinion of interest and demographic variable of interest from dropdown boxes.
 
-        - What responses does the system provide?
-                - Scatter plot of these variables
+	- What responses does the system provide?
+		- Scatter plot of these variables
 
